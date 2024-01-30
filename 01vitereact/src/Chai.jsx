@@ -1,6 +1,6 @@
 function Chai() {
     return (
-        <h3>Chai aur Preesh |</h3>
+        <h3>Chai aur Woh |</h3>
     )
 }
 

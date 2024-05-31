@@ -4,7 +4,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  let [counter, setCounter]  = useState(15)
+  let [counter, setCounter]  = useState(15) // yahan useState k andar ese koi bhi ek value dena hai bas
+  // useState hook ek variable ke upar kuch bhi change karne k liye use hota hai.. 
+  // yahan variable counter hai aur function setCounter
+  // useState ek array return karta hai.. yahan array me counter aur setCounter hai
 
   //let counter = 15
 
@@ -31,7 +34,7 @@ function App() {
       onClick={removeValue}
       >remove value {counter}</button>
       <p>footer: {counter}</p>
-      </>
+    </>
   )
 }
 

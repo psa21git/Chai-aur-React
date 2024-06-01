@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -8,6 +8,16 @@ function App() {
   let [numAllowed, setnumAllowed] = useState(false)
   let [charAllowed, setcharAllowed] = useState(false)
   const [password, setPassword] = useState("")
+
+
+  // useRef HOOK
+  const passwordRef = useRef(null)
+
+  const copyPasswordToClipboard = useCallback(()=>{
+    passwordRef.current?.select()
+    window.navigator.clipboard.writeText(password)
+    // window method is used in frontend only cannot be used in server side rendering!
+  },[password])
 
   const passwordGenerator = useCallback(()=>{
     let pass = ""
@@ -25,6 +35,7 @@ function App() {
     setPassword(pass)
   },[length,numAllowed,charAllowed,setPassword])
 
+  // useEffect is used to use functions ig
   useEffect(()=>{
     passwordGenerator()
   },
@@ -41,11 +52,12 @@ function App() {
             className="outline-none w-full py-1 px-3"
             placeholder="Password"
             readOnly
-            // ref={passwordRef}
+            ref={passwordRef}
         />
       <button
-        // onClick={copyPasswordToClipboard}
+        onClick={copyPasswordToClipboard}
         className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0'
+        
         >copy</button>
       </div>
       <div className='flex text-sm gap-x-2' >

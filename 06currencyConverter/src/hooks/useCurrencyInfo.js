@@ -5,11 +5,12 @@ function useCurrencyInfo(currency){
 
     useEffect(()=>{
         fetch(`https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@2024-03-06/v1/currencies/${currency}.json`)
-        .then((res)=>res.json)
+        // fetch(`https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/${currency}.json`)
+        .then((res)=>res.json())
         // converting the api response into json data
         .then((res)=>setData(res[currency]))
         // setting the data using useState
-
+        // console.log(data)
     },[currency])
     // dependencies is currency as each time we change currency this hook should be called
     console.log(data);

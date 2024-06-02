@@ -41,16 +41,17 @@ function InputBox({
                   onChange={(e)=>{onCurrencyChange && onCurrencyChange(e.target.value)}}
                   // iska target value string hi hai aur hame string hi chahiye !
                   >
-                    {currencyOptions.map((currency)=>{
+                    
+                    {currencyOptions.map((currency)=>
                       // key is used in array loops for optimization
                       <option key={currency} value={currency}>
                         {currency}
                       </option>
-                    })}
+                    )}
               </select>
           </div>
       </div>
   );
 }
 
-export default InputBox;
+export {InputBox};

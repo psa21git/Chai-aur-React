@@ -10,12 +10,14 @@ function App() {
     setToDos((prev) => [{id: Date.now(),...toDo},...prev])
   }
 
+
+  // callback functions me agar curly brackets de rahe ho to return karna padega!
   const updateToDo = (id,toDo) => {
-    setToDos((prev) => {
-      prev.map((prevToDo) => {
+    setToDos((prev) => 
+      prev.map((prevToDo) => 
         prevToDo.id === id ? toDo : prevToDo
-      })
-    })
+      )
+    )
   }
 
   const deleteToDo = (id) => {
@@ -23,11 +25,11 @@ function App() {
   }
 
   const toggleComplete = (id) => {
-    setToDos((prev) => {
-      prev.map((prevToDo) => {
+    setToDos((prev) => 
+      prev.map((prevToDo) => 
         prevToDo.id === id ? {...prevToDo,completed: !prevToDo.completed} : prevToDo
-      })
-    })
+      )
+   )
   }
 
   useEffect(() => {

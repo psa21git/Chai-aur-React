@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 import { ToDoProvider } from './contexts/Index'
+import {ToDoForm,ToDoItem} from './components/Index'
+
 
 function App() {
   const [toDos,setToDos] = useState([])
 
   const addToDo = (toDo)=>{
-    setToDos((prev) => {[{id: Date.now(),...toDo},...prev]})
+    setToDos((prev) => [{id: Date.now(),...toDo},...prev])
   }
 
   const updateToDo = (id,toDo) => {
@@ -46,10 +47,17 @@ function App() {
           <div className="w-full max-w-2xl mx-auto shadow-md rounded-lg px-4 py-3 text-white">
               <h1 className="text-2xl font-bold text-center mb-8 mt-2">Manage Your Todos</h1>
               <div className="mb-4">
-                  {/* Todo form goes here */} 
+                  {/* Todo form goes here */}
+                  <ToDoForm />
               </div>
               <div className="flex flex-wrap gap-y-3">
                   {/*Loop and Add TodoItem here */}
+                  {toDos.map((toDo)=>(
+                    <div key={toDo.id} className='w-full'>
+                      <ToDoItem toDo={toDo}/>
+                    </div>
+                  )
+                  )}
               </div>
           </div>
       </div>

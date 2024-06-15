@@ -11,7 +11,7 @@ function useWeather(loc){
         // setting the data using useState
         // console.log(data)
     },[loc])
-    if (data!={}) console.log(data);
+    // if (data!={}) console.log(data);
     return data 
     //data is object we can check from api link
 }

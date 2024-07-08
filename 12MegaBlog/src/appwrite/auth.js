@@ -38,7 +38,7 @@ export class AuthService {
 
     async getCurrentUser(){
         try {
-            const user = await account.get();
+            const user = await this.account.get();
             return user;
             // Logged in
         } catch (error) {

@@ -9,7 +9,7 @@ function useWeather(loc){
         // converting the api response into json data
         .then((res)=>setData(res["current"]))
         // setting the data using useState
-        // console.log(data)
+        console.log(data)
     },[loc])
     // if (data!={}) console.log(data);
     return data 

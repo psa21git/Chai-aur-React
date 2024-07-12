@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
-    loc: ' ',
-    api:{}
+    loc: '',
 }
 
 const weatherSlice = createSlice({

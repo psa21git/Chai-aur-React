@@ -26,17 +26,17 @@ function Weather() {
         }
     }
     
-    console.log(api, isVisible, location)
+    // console.log(api, isVisible, location)
 
     const setWeatherHandler = (e) => {
         e.preventDefault()
         dispatch(setWeather(loc))
-        toggleVisibility()
+        // toggleVisibility(api)
         setLoc('')    
     }
 
-    const temp_celcius = api['temp_c'] ?? ' '
-    const condition = api['condition'] ?? " "
+    const temp_celcius = api['current']?.['temp_c'] ?? ' '
+    const condition = api['current']?.['condition'] ?? ""
     const weatherText = condition['text'] ?? ' '
     const weatherIcon = condition['icon'] ?? ''
     
@@ -62,17 +62,27 @@ function Weather() {
                 </div>
                 
             </form>
-            {isVisible && 
+            <div>
+                {api['location'] && 
                 <div className='w-full text-white p-4 text-xl text-center bg-gray-700 '>
-                    City : {location}
+                    City : {api['location']?.['name'] ?? ""}
                     <br />
-                    Temperature in celcius : {temp_celcius} *C
+                    Region : {api['location']?.['region'] ?? ""}
+                    <br />
+                    Country : {api['location']?.['country'] ?? ""}
+                    <br />
+                    Temperature in celcius : {temp_celcius} °C
                     <br />
                     Weather : {weatherText}
                     <img src={weatherIcon} className='block mx-auto h-100 w-auto' />
                 </div>
-            
-            }
+                }
+                {!api['location'] && 
+                    <div className='w-full text-white p-4 text-xl text-center bg-gray-700 '>
+                        ! Pls Enter a valid City Name !
+                    </div>
+                }
+            </div>
         </div>
         
     )

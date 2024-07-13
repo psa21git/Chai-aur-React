@@ -10,7 +10,8 @@ function useWeather(loc){
         .then((res)=>setData(res))
         // setting the data using useState
         .catch(error => {
-            setData({});  // Handle any errors that occurred during the fetch
+            setData({});
+            console.log(error)  // Handle any errors that occurred during the fetch
           })
         // console.log(data)
     },[loc])

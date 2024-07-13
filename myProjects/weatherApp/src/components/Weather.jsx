@@ -6,31 +6,17 @@ import useCitySuggestions from '../hooks/useCitySuggestions'
 
 function Weather() {
     
-    // const [city,setCity] = useCitySuggestions()
     const [loc,setLoc] = useState('')
+    const [locCity,setLocCity] = useState('')
 
     const dispatch = useDispatch()
 
     const location = useSelector(state => state.loc)
-    const city = useSelector(state => state.city)
     const api = useWeather(location) ?? {}
+    const city = useCitySuggestions(locCity) ?? []
     
-    // setApi(useWeather(location) ?? {})
-    // useEffect(()=>{
-    //     setApi(useWeather(location) ?? {})
-    // },[location])
+    console.log(city.length,locCity)
     
-    const toggleVisibility = ()=>{
-        if(api!={}) {
-            setIsVisible(true)
-        }
-        else{
-            setIsVisible(false)
-        }
-    }
-    
-    // console.log(api, isVisible, location)
-    console.log(city)
     const setWeatherHandler = (e) => {
         e.preventDefault()
         dispatch(setWeather(loc))
@@ -39,7 +25,7 @@ function Weather() {
 
     const setCitySuggestionHandler = (e)=>{
         setLoc(e)
-        dispatch(setCity(useCitySuggestions(loc)))
+        setLocCity(e)
     }
 
     const temp_celcius = api['current']?.['temp_c'] ?? ' '

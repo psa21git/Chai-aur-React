@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     loc: '',
+    city:[]
 }
 
 const weatherSlice = createSlice({
@@ -9,10 +10,13 @@ const weatherSlice = createSlice({
     reducers:{
         setWeather: (state, action)=>{
             state.loc = action.payload
+        },
+        setCity: (state,action)=>{
+            state.city = action.payload
         }
     }
 })
 
-export const {setWeather} = weatherSlice.actions
+export const {setWeather,setCity} = weatherSlice.actions
 
 export default weatherSlice.reducer

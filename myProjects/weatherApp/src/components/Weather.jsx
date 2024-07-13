@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import useWeather from '../hooks/useWeather'
-import { setWeather } from '../features/weatherSlice'
+import { setWeather,setCity } from '../features/weatherSlice'
 import {useSelector,useDispatch} from 'react-redux'
+import useCitySuggestions from '../hooks/useCitySuggestions'
 
 function Weather() {
-    const [isVisible,setIsVisible] = useState(false)
-    // const [api,setApi] = useState({})
+    
+    // const [city,setCity] = useCitySuggestions()
     const [loc,setLoc] = useState('')
 
     const dispatch = useDispatch()
 
     const location = useSelector(state => state.loc)
+    const city = useSelector(state => state.city)
     const api = useWeather(location) ?? {}
+    
     // setApi(useWeather(location) ?? {})
     // useEffect(()=>{
     //     setApi(useWeather(location) ?? {})
@@ -27,12 +30,16 @@ function Weather() {
     }
     
     // console.log(api, isVisible, location)
-
+    console.log(city)
     const setWeatherHandler = (e) => {
         e.preventDefault()
         dispatch(setWeather(loc))
-        // toggleVisibility(api)
         setLoc('')    
+    }
+
+    const setCitySuggestionHandler = (e)=>{
+        setLoc(e)
+        dispatch(setCity(useCitySuggestions(loc)))
     }
 
     const temp_celcius = api['current']?.['temp_c'] ?? ' '
@@ -50,7 +57,7 @@ function Weather() {
                 <div className='relative w-full flex my-5 items-center justify-center bg-gray-950'>
                     <input
                         value={loc}
-                        onChange={(e)=>setLoc(e.target.value)}
+                        onChange={(e)=>setCitySuggestionHandler(e.target.value)}
                         placeholder='search city'
                         className="block p-2.5 w-1/2 mx-5 h-10  text-sm text-gray-900 bg-gray-50 rounded-lg border-s-gray-50 border-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-s-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
                     />
@@ -59,6 +66,8 @@ function Weather() {
                     >
                         <img src="https://cdn-icons-png.flaticon.com/128/10412/10412430.png" className='w-4 h-4' alt="" />
                     </button>
+                    <br />
+                    
                 </div>
                 
             </form>

@@ -64,16 +64,38 @@ function Weather() {
             </form>
             <div>
                 {api['location'] && 
-                <div className='w-full text-white p-4 text-xl text-center bg-gray-700 '>
-                    City : {api['location']?.['name'] ?? ""}
-                    <br />
-                    Region : {api['location']?.['region'] ?? ""}
-                    <br />
-                    Country : {api['location']?.['country'] ?? ""}
-                    <br />
-                    Temperature in celcius : {temp_celcius} °C
-                    <br />
-                    Weather : {weatherText}
+                <div className=' w-full text-white justify-center items-center p-4 text-xl text-center bg-gray-700 '>   
+                    <div className='flex justify-center'>
+                        <div className='font-bold'>City :</div>
+                        <div className='ml-2'>
+                            {api['location']?.['name'] ?? ""}
+                        </div>
+                    </div> 
+                    <div className='flex justify-center'>
+                        <div className='font-bold'>Region :</div> 
+                        <div className='ml-2'>
+                            {api['location']?.['region'] ?? ""}
+                        </div>
+                    </div> 
+                    <div className='flex justify-center'>
+                        <div className='font-bold'>Country :</div> 
+                        <div className='ml-2'>
+                            {api['location']?.['country'] ?? ""}
+                        </div>
+                    </div> 
+                    <div className='flex justify-center'>
+                        <div className='font-bold'>Temperature in celcius :</div>
+                        <div className='ml-2'>
+                            {temp_celcius} °C
+                        </div>
+                    </div> 
+                    <div className=' flex justify-center'>
+                        <div className='font-bold'>Weather :</div> 
+                        <div className='ml-2'>
+                            {weatherText}
+                        </div>
+                    </div> 
+                    
                     <img src={weatherIcon} className='block mx-auto h-100 w-auto' />
                 </div>
                 }

@@ -1,6 +1,6 @@
 import {useState,useEffect} from 'react'
 
-function useWeather(loc,setIsVisible){
+function useWeather(loc){
     const [data, setData] = useState({});
 
     useEffect(()=>{

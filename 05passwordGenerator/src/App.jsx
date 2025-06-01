@@ -25,7 +25,7 @@ function App() {
     if (numAllowed) str += "0123456789"
     if (charAllowed) str += "!@#$%^&*-_+=[]{}~`"
 
-    console.log(str);
+    // console.log(str);
 
     for (let i = 1; i <= length; i++){
       let charIndex = Math.floor(Math.random() * str.length + 1)

@@ -7,6 +7,7 @@ function Layout() {
     <>
     <Header/>
     <Outlet/>
+    {/* outlet is like a place holder for different components whicha are passed after Layout */}
     <Footer/>
     </>
   )

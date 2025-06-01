@@ -1,6 +1,7 @@
 import React,{useId} from 'react'
 
 function InputBox({
+  // parameters for our input Box components
   label,
   amount,
   onAmountChange,

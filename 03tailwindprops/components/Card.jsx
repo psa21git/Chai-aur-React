@@ -1,5 +1,5 @@
 import React from 'react'
-
+// passing props into the card component which we will use in future.
 function Card({username, btnText="visit me"}) {
     console.log(username);
   return (
